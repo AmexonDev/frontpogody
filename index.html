@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080e18">
+  <title>FrontPogody — Aktualności pogodowe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">Front<span>Pogody</span></a>
+    <nav>
+      <a href="#aktualnosci">Aktualności</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">POGODA • SYNOPTYKA • BURZE</p>
+      <h1>Aktualności<br>pogodowe.</h1>
+      <p>Prognozy, ostrzeżenia i najważniejsze zjawiska atmosferyczne.</p>
+    </section>
+
+    <section id="aktualnosci">
+      <div class="section-head">
+        <h2>Najnowsze artykuły</h2>
+        <button id="refresh" class="secondary">Odśwież</button>
+      </div>
+      <p id="status">Ładowanie artykułów...</p>
+      <div id="posts" class="posts"></div>
+    </section>
+  </main>
+
+  <div id="articleOverlay" class="article-overlay" aria-hidden="true">
+    <article class="article-view">
+      <button id="closeArticle" class="secondary back-button">← Powrót</button>
+      <p id="articleCategory" class="category"></p>
+      <h1 id="articleTitle"></h1>
+      <img id="articleImage" alt="">
+      <div id="articleContent"></div>
+    </article>
+  </div>
+
+  <div id="adminOverlay" class="admin-overlay"></div>
+
+  <aside id="adminPanel" class="admin-panel" aria-hidden="true">
+    <div class="admin-header">
+      <h2>Panel administratora</h2>
+      <button id="closeAdmin" class="close-admin" type="button" aria-label="Zamknij">✕</button>
+    </div>
+
+    <form id="loginForm">
+      <label for="password">Hasło administratora</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Zaloguj</button>
+    </form>
+
+    <form id="postForm" hidden>
+      <label for="title">Tytuł</label>
+      <input id="title" maxlength="150" required>
+
+      <label for="image">URL zdjęcia</label>
+      <input id="image" type="url" placeholder="https://..." required>
+
+      <label for="category">Kategoria</label>
+      <select id="category" required>
+        <option value="Prognozy">Prognozy</option>
+        <option value="Ostrzeżenia">Ostrzeżenia</option>
+        <option value="Burze">Burze</option>
+        <option value="Synoptyka">Synoptyka</option>
+        <option value="Klimat">Klimat</option>
+      </select>
+
+      <label for="content">Treść artykułu</label>
+      <textarea id="content" rows="9" required></textarea>
+
+      <button type="submit">Dodaj wpis do eksportu</button>
+      <button id="logout" type="button" class="secondary">Wyloguj</button>
+    </form>
+
+    <div id="exportArea" hidden>
+      <h3>JSON postów</h3>
+      <p>Skopiuj całość i zaktualizuj dane swojego dokumentu na npoint.io.</p>
+      <textarea id="jsonOutput" rows="14" readonly></textarea>
+      <button id="copyJson" type="button">Kopiuj JSON</button>
+    </div>
+
+    <div id="adminPosts"></div>
+  </aside>
+
+  <footer>FrontPogody © 2026</footer>
+  <script src="script.js"></script>
+</body>
+</html>
